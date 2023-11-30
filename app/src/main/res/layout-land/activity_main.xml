@@ -7,10 +7,19 @@
     tools:context=".MainActivity">
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentContainerView"
-        android:layout_width="match_parent"
+        android:id="@+id/fragmentContainerViewLand"
+        android:layout_width="250dp"
         android:layout_height="match_parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerViewLand2"
+        android:layout_width="450dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="256dp"
+        app:layout_constraintStart_toStartOf="@+id/fragmentContainerViewLand"
+        app:layout_constraintTop_toTopOf="@id/fragmentContainerViewLand" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
