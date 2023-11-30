@@ -5,15 +5,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
 public class Adapter extends BaseAdapter {
-    private final ArrayList<String> lista;
+    private final ArrayList<ItemList> lista;
     private final Context context;
 
-    public Adapter(ArrayList<String> lista, Context context){
+    public Adapter(ArrayList<ItemList> lista, Context context){
         this.context = context;
         this.lista = lista;
     }
@@ -43,7 +44,10 @@ public class Adapter extends BaseAdapter {
         }
 
         TextView textViewItem = view.findViewById(R.id.textViewItem);
-        textViewItem.setText(lista.get(position));
+        textViewItem.setText(lista.get(position).getText());
+
+        ImageView imageViewItem = view.findViewById(R.id.imageView);
+        imageViewItem.setImageResource(lista.get(position).getImageResId());
 
         return view;
     }

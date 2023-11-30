@@ -23,11 +23,11 @@ public class FragmentList extends Fragment {
         View rootView = inflater.inflate(R.layout.list_fragment, container, false);
         ListView listView = rootView.findViewById(R.id.listView);
 
-        ArrayList<String> lista = new ArrayList<>();
-        lista.add("Cardio");
-        lista.add("Piernas");
-        lista.add("Brazos");
-        lista.add("Resistencia");
+        ArrayList<ItemList> lista = new ArrayList<>();
+        lista.add(new ItemList("Cardio", R.drawable.eliptica));
+        lista.add(new ItemList("Piernas", R.drawable.sentadilla));
+        lista.add(new ItemList("Brazos", R.drawable.pushup));
+        lista.add(new ItemList("Resistencia", R.drawable.run));
 
 
         Adapter adapter = new Adapter(lista, requireContext());
@@ -37,7 +37,7 @@ public class FragmentList extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String selectedItem = lista.get(position);
+                String selectedItem = lista.get(position).getText();
                 // Call a method to handle item click and navigate to AnotherFragment
                 handleItemClickAndNavigate(selectedItem);
             }

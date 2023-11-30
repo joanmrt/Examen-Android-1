@@ -26,5 +26,12 @@
         android:layout_below="@+id/descripcion"
         />
 
+    <ImageView
+        android:id="@+id/imageViewExercise"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_below="@+id/informacion"
+        android:layout_marginTop="20dp"/>
+
 
 </RelativeLayout>
