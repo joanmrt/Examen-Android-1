@@ -4,9 +4,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import java.util.ArrayList;
 
@@ -25,14 +28,41 @@ public class FragmentList extends Fragment {
         lista.add("Piernas");
         lista.add("Brazos");
         lista.add("Resistencia");
-        lista.add("Cardio Intensivo");
 
 
         Adapter adapter = new Adapter(lista, requireContext());
 
         listView.setAdapter(adapter);
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String selectedItem = lista.get(position);
+                // Call a method to handle item click and navigate to AnotherFragment
+                handleItemClickAndNavigate(selectedItem);
+            }
+        });
+
         return rootView;
+    }
+
+    public void handleItemClickAndNavigate(String item_seleccionado){
+        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        // Pass any data you want to AnotherFragment using arguments
+        Bundle bundle = new Bundle();
+        bundle.putString("selectedItem", item_seleccionado);
+
+        FragmentInfo frag_info = new FragmentInfo();
+        frag_info.setArguments(bundle);
+
+        // Replace the current fragment with AnotherFragment
+        fragmentTransaction.replace(R.id.fragmentContainerView, frag_info);
+        // Add the transaction to the back stack to allow back navigation
+        fragmentTransaction.addToBackStack(null);
+        // Commit the transaction
+        fragmentTransaction.commit();
     }
 
 }
